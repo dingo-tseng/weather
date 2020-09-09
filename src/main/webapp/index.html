@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<script type="text/javascript"
+		src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+	</script>
+<title>Insert title here</title>
+</head>
+<body>
+
+	<input type="button" onclick="find()" value="find" />
+
+	<div id="div1">Page Show here</div>
+
+	<input type="button" onclick="save()" value="save" />
+
+	<div id="div1">Page Show here</div>
+
+	<script>
+	function find(){
+		const endpoint = 'http://localhost/weather/Weather/findSearch';
+		 console.log(123);
+		 $.ajax({
+		    type: "POST",
+		    url: endpoint,
+		    dataType: "json",
+	        contentType: "application/json; charset=utf-8",
+	        data:{
+		            "city": "台北",
+		            "low": "20",
+		            "high": "30",
+		            "aqiL": "5",
+		            "aqiH": "30",
+		            "flL": "2",
+		            "flH": "4",
+		            "startDate": "2020-08-20",
+		            "endDate": "2020-09-08"
+	        },
+	        success : function(result) {
+	            console.log(result); // result是json物件
+	          },
+		    error: function (thrownError) {
+		      console.log(thrownError);
+		    }
+		  });
+	}
+	
+	function save(){
+		const endpoint = 'http://localhost/weather/Weather/saveAllApi';
+		 console.log(201);
+		 $.ajax({
+		    type: "Get",
+		    url: endpoint,
+		    dataType: "json",
+	        success : function(result) {
+	            console.log(result); // result是json物件
+	          },
+		    error: function (thrownError) {
+		      console.log(thrownError);
+		    }
+		  });
+	}
+	 
+    </script>
+
+</body>
+</html>
